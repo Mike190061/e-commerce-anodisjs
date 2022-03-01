@@ -5,7 +5,6 @@ export default class UpdateValidator {
     constructor(protected ctx: HttpContextContract) {}
   
     public schema = schema.create({
-      name: schema.string({ trim: true }),
       icon: schema.string()
     })
   

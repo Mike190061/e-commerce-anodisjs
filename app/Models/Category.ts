@@ -12,7 +12,7 @@ export default class Category extends BaseModel {
   @column()
   @slugify({
     strategy: 'dbIncrement',
-    fields: ['title'],
+    fields: ['name'],
     allowUpdates: true
   })
   public slug: string

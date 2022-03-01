@@ -19,11 +19,23 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import CategoriesController from 'App/Controllers/Http/CategoriesController'
 
 Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.post('/category', 'CategoriesController.store')
+Route.group(() => {
+  Route.get('/', 'CategoriesController.show')
 
-Route.post('/updateCategory', 'CategoriesController.update')
+  Route.get('/:slug', 'CategoriesController.findBySlug')
+
+  Route.post('/', 'CategoriesController.store')
+
+  Route.put('/:id', 'CategoriesController.update') 
+
+  Route.delete('/:id', 'CategoriesController.delete')
+
+  // Route.post('/findcategory', 'CategoriesController.findCategory')
+})
+.prefix('/category')
